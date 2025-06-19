@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MQTT.js ESP8266</title>
+    <link rel="stylesheet" type="text/css" href="/css/style_mqtt.css">
+
+</head>
+<body>
+    <h1>Data dengan protokol Mqtt ESP8266</h1>
+    <div>
+        <label for="broker-url">Broker URL:</label>
+        <input type="text" id="broker-url" value="wss://broker.emqx.io:8084/mqtt">
+        <label for="topic">Topic:</label>
+        <input type="text" id="topic" value="balamantra">
+        <button id="connect-btn">Connect</button>
+        <button id="disconnect-btn" disabled>Disconnect</button>
+    </div>
+    <div id="connection-status">Status: Disconnected</div>
+    <div id="data-container">
+        <p>Menunggu koneksi ke broker MQTT...</p>
+    </div>
+
+    <!-- Gunakan MQTT.js dari CDN -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js"></script> -->
+    <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+    <script src="script/app.js"></script>
+</body>
+</html>

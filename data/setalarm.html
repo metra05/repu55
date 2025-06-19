@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<html>
+	
+<head>
+  <title>Jam Alarm</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" type="text/css" href="/css/style_setalarm.css">
+
+</head>
+
+<body>
+	
+	<div>
+    
+    <div class="topnav">
+      <a href="/index.html">Home</a>
+      <a href="/setjam.html">Set Jam</a>
+      <a class="active" href="/setalarm.html">Set Alarm</a>
+      <a href="/setalarmhar.html">Alarm har</a>
+      <a href="/setwifi.html">Set Wifi</a>
+      <a href="/kontak.html">Kontak</a>
+    </div>
+
+	  <h1>SETTING ALARM</h1>
+    
+ 	</div>
+	<div>
+
+    <div class="batasform2">
+      <h3>Form Setting Alarm</h3>
+        
+        <p>
+          <a href="/on"><button class="button">ON</button></a>
+          <a href="/off"><button class="button button2">OFF</button></a>
+        </p>
+        <p>ALARM: <strong id="state"> %STATE%</strong></p>
+        <p>
+          <span class="sensor-labels">Alarm Ke 1:</span>
+          <span id="alarm">%ALARM%</span> 
+        </p>
+        <p>
+          <span class="sensor-labels">Alarm Ke 2:</span>
+          <span id="alarma">%ALARMA%</span> 
+        </p>
+        <p>
+          <span class="sensor-labels">Alarm Ke 3:</span>
+          <span id="alarmb">%ALARMB%</span> 
+        </p>
+        <p>
+          <span class="sensor-labels">Alarm Ke 4:</span>
+          <span id="alarmc">%ALARMC%</span> 
+        </p>
+        <p>
+          <span class="sensor-labels">Alarm Ke 5:</span>
+          <span id="alarmd">%ALARMD%</span> 
+        </p>
+
+
+        <p>
+          <span class="sensor-labels">HARI ALARM AKTIF:</span><br>
+          <span id="alarm2">%ALARM2%</span> 
+        </p>
+
+        <form id="ngeluh" action="/get" >
+          <div id="formku2">
+
+            <div class="setitem">
+              <span class="tengah">Alarm ke 1: </span>
+              <label class="switch">
+                <input type="checkbox" id="aktif1" name="aktif1" value="1">
+                <span class="slider round"></span>
+              </label>
+              <div class="petek2">
+                <label for="alarmjam">Masukkan Jam Alarm 1:</label> 
+                <input type="number" id="alarmjam" name="alarmjam" min="0" max="23"> 
+                <label for="alarmmenit">Masukkan Menit Alarm 1:</label> 
+                <input type="number" id="alarmmenit" name="alarmmenit" min="0" max="59"> 
+                <label for="alarmdetik">Lama Alarm 1 (detik):</label> 
+                <input type="number" id="alarmdetik" name="alarmdetik" min="5" max="250"> 
+              </div>
+            </div>
+              <label class="emboh">Pilih Hari:</label> <br>
+              <div id="pilihhar1">
+                <input type="checkbox"id="Minggu" class="Minggu" name="Minggu" value="1" onclick="kirimAH()">
+                <label for="Minggu">Minggu</label>
+                <input type="checkbox" id="Senin" class="Senin" name="Senin" value="1" onclick="kirimAH()">
+                <label for="Senin">Senin</label>
+                <input type="checkbox" id="Selasa" class="Selasa" name="Selasa" value="1" onclick="kirimAH()">
+                <label for="Selasa">Selasa</label>
+                <input type="checkbox" id="Rabu" class="Rabu" name="Rabu" value="1" onclick="kirimAH()">
+                <label for="Rabu">Rabu</label>
+                <input type="checkbox" id="Kamis" class="Kamis" name="Kamis" value="1" onclick="kirimAH()">
+                <label for="Kamis">Kamis</label>
+                <input type="checkbox" id="Jumat" class="Jumat" name="Jumat" value="1" onclick="kirimAH()">
+                <label for="Jumat">Jumat</label>
+                <input type="checkbox" id="Sabtu" class="Sabtu" name="Sabtu" value="1" onclick="kirimAH()">
+                <label for="Sabtu">Sabtu</label>
+              </div>
+              <input id="sembunyi" type="number" name="integerhar" value="">
+
+            <div class="setitem">
+              <span class="tengah">Alarm ke 2: </span>
+              <label class="switch">
+                <input type="checkbox" id="aktif2" name="aktif2">
+                <span class="slider round"></span>
+              </label>
+              <div class="petek2">
+                <label for="alarmjam1">Masukkan Jam Alarm 2:</label>  
+                <input type="number" id="alarmjam1" name="alarmjam1" min="0" max="23"> 
+                <label for="alarmmenit1">Masukkan Menit Alarm 2:</label> 
+                <input type="number" id="alarmmenit1" name="alarmmenit1" min="0" max="59"> 
+                <label for="alarmdetik1">Lama Alarm 2 (detik):</label> 
+                <input type="number" id="alarmdetik1" name="alarmdetik1" min="5" max="250"> 
+              </div>
+            </div>
+              <label class="emboh">Pilih Hari:</label> <br>
+              <div id="pilihhar2">
+                <input type="checkbox" id="Minggu1" class="Minggu" name="Minggu" value="1" onclick="kirimAH()">
+                <label for="Minggu1">Minggu</label>
+                <input type="checkbox" id="Senin1" class="Senin" name="Senin" value="1" onclick="kirimAH()">
+                <label for="Senin1">Senin</label>
+                <input type="checkbox" id="Selasa1" class="Selasa" name="Selasa" value="1" onclick="kirimAH()">
+                <label for="Selasa1">Selasa</label>
+                <input type="checkbox" id="Rabu1" class="Rabu" name="Rabu" value="1" onclick="kirimAH()">
+                <label for="Rabu1">Rabu</label>
+                <input type="checkbox" id="Kamis1" class="Kamis" name="Kamis" value="1" onclick="kirimAH()">
+                <label for="Kamis1">Kamis</label>
+                <input type="checkbox" id="Jumat1" class="Jumat" name="Jumat" value="1" onclick="kirimAH()">
+                <label for="Jumat1">Jumat</label>
+                <input type="checkbox" id="Sabtu1" class="Sabtu" name="Sabtu" value="1" onclick="kirimAH()">
+                <label for="Sabtu1">Sabtu</label>
+              </div>
+              <input id="sembunyi1" type="number" name="integerhar1" value="">
+            
+              <div class="setitem">
+                <span class="tengah">Alarm ke 3: </span>
+                <label class="switch">
+                  <input type="checkbox" id="aktif3" name="aktif3">
+                  <span class="slider round"></span>
+                </label>
+                <div class="petek2">
+                  <label for="alarmjam2">Masukkan Jam Alarm 3:</label>  
+                  <input type="number" id="alarmjam2" name="alarmjam2" min="0" max="23"> 
+                  <label for="alarmmenit2">Masukkan Menit Alarm 3:</label> 
+                  <input type="number" id="alarmmenit2" name="alarmmenit2" min="0" max="59"> 
+                  <label for="alarmdetik2">Lama Alarm 3 (detik):</label> 
+                  <input type="number" id="alarmdetik2" name="alarmdetik2" min="5" max="250"> 
+                </div>
+              </div>
+                <label class="emboh">Pilih Hari:</label> <br>
+                <div id="pilihhar3">
+                  <input type="checkbox" id="Minggu2" class="Minggu" name="Minggu" value="1" onclick="kirimAH()">
+                  <label for="Minggu2">Minggu</label>
+                  <input type="checkbox" id="Senin2" class="Senin" name="Senin" value="1" onclick="kirimAH()">
+                  <label for="Senin2">Senin</label>
+                  <input type="checkbox" id="Selasa2" class="Selasa" name="Selasa" value="1" onclick="kirimAH()">
+                  <label for="Selasa2">Selasa</label>
+                  <input type="checkbox" id="Rabu2" class="Rabu" name="Rabu" value="1" onclick="kirimAH()">
+                  <label for="Rabu2">Rabu</label>
+                  <input type="checkbox" id="Kamis2" class="Kamis" name="Kamis" value="1" onclick="kirimAH()">
+                  <label for="Kamis2">Kamis</label>
+                  <input type="checkbox" id="Jumat2" class="Jumat" name="Jumat" value="1" onclick="kirimAH()">
+                  <label for="Jumat2">Jumat</label>
+                  <input type="checkbox" id="Sabtu2" class="Sabtu" name="Sabtu" value="1" onclick="kirimAH()">
+                  <label for="Sabtu2">Sabtu</label>
+                </div>
+                <input id="sembunyi2" type="number" name="integerhar2" value="">
+
+                <div class="setitem">
+                  <span class="tengah">Alarm ke 4: </span>
+                  <label class="switch">
+                    <input type="checkbox" id="aktif4" name="aktif4">
+                    <span class="slider round"></span>
+                  </label>
+                  <div class="petek2">
+                    <label for="alarmjam3">Masukkan Jam Alarm 4:</label>  
+                    <input type="number" id="alarmjam3" name="alarmjam3" min="0" max="23"> 
+                    <label for="alarmmenit3">Masukkan Menit Alarm 4:</label> 
+                    <input type="number" id="alarmmenit3" name="alarmmenit3" min="0" max="59"> 
+                    <label for="alarmdetik3">Lama Alarm 4 (detik):</label> 
+                    <input type="number" id="alarmdetik3" name="alarmdetik3" min="5" max="250"> 
+                  </div>
+                </div>
+                  <label class="emboh">Pilih Hari:</label> <br>
+                  <div id="pilihhar4">
+                    <input type="checkbox" id="Minggu3" class="Minggu" name="Minggu" value="1" onclick="kirimAH()">
+                    <label for="Minggu3">Minggu</label>
+                    <input type="checkbox" id="Senin3" class="Senin" name="Senin" value="1" onclick="kirimAH()">
+                    <label for="Senin3">Senin</label>
+                    <input type="checkbox" id="Selasa3" class="Selasa" name="Selasa" value="1" onclick="kirimAH()">
+                    <label for="Selasa3">Selasa</label>
+                    <input type="checkbox" id="Rabu3" class="Rabu" name="Rabu" value="1" onclick="kirimAH()">
+                    <label for="Rabu3">Rabu</label>
+                    <input type="checkbox" id="Kamis3" class="Kamis" name="Kamis" value="1" onclick="kirimAH()">
+                    <label for="Kamis3">Kamis</label>
+                    <input type="checkbox" id="Jumat3" class="Jumat" name="Jumat" value="1" onclick="kirimAH()">
+                    <label for="Jumat3">Jumat</label>
+                    <input type="checkbox" id="Sabtu3" class="Sabtu" name="Sabtu" value="1" onclick="kirimAH()">
+                    <label for="Sabtu3">Sabtu</label>
+                  </div>
+                  <input id="sembunyi3" type="number" name="integerhar3" value="">
+                
+                  <div class="setitem">
+                    <span class="tengah">Alarm ke 5: </span>
+                    <label class="switch">
+                      <input type="checkbox" id="aktif5" name="aktif5">
+                      <span class="slider round"></span>
+                    </label>
+                    <div class="petek2">
+                      <label for="alarmjam4">Masukkan Jam Alarm 5:</label>  
+                      <input type="number" id="alarmjam4" name="alarmjam4" min="0" max="23"> 
+                      <label for="alarmmenit4">Masukkan Menit Alarm 5:</label> 
+                      <input type="number" id="alarmmenit4" name="alarmmenit4" min="0" max="59"> 
+                      <label for="alarmdetik4">Lama Alarm 5 (detik):</label> 
+                      <input type="number" id="alarmdetik4" name="alarmdetik4" min="5" max="250"> 
+                    </div>
+                  </div>
+                    <label class="emboh">Pilih Hari:</label> <br>
+                    <div id="pilihhar5">
+                      <input type="checkbox" id="Minggu4" class="Minggu" name="Minggu" value="1" onclick="kirimAH()">
+                      <label for="Minggu4">Minggu</label>
+                      <input type="checkbox" id="Senin4" class="Senin" name="Senin" value="1" onclick="kirimAH()">
+                      <label for="Senin4">Senin</label>
+                      <input type="checkbox" id="Selasa4" class="Selasa" name="Selasa" value="1" onclick="kirimAH()">
+                      <label for="Selasa4">Selasa</label>
+                      <input type="checkbox" id="Rabu4" class="Rabu" name="Rabu" value="1" onclick="kirimAH()">
+                      <label for="Rabu4">Rabu</label>
+                      <input type="checkbox" id="Kamis4" class="Kamis" name="Kamis" value="1" onclick="kirimAH()">
+                      <label for="Kamis4">Kamis</label>
+                      <input type="checkbox" id="Jumat4" class="Jumat" name="Jumat" value="1" onclick="kirimAH()">
+                      <label for="Jumat4">Jumat</label>
+                      <input type="checkbox" id="Sabtu4" class="Sabtu" name="Sabtu" value="1" onclick="kirimAH()">
+                      <label for="Sabtu4">Sabtu</label>
+                    </div>
+                    <input id="sembunyi4" type="number" name="integerhar4" value="">
+                  
+    
+            <!-- <input type="submit" value="Kirim!" > -->
+          </div>
+        
+      </form> 
+      <input class="sinkron" type="button" value="Kirim Data Alarm!" onclick="kirimAhReal()">
+
+    </div>
+
+	 </div>
+</body>
+<script src="/script/script_setalarm.js"></script>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html>
+	
+<head>
+  <title>Jam Alarm</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" type="text/css" href="/css/style_setwifi.css">
+
+</head>
+
+<body>
+	
+	<div>
+    
+    <div class="topnav">
+      <a href="/index.html">Home</a>
+      <a href="/setjam.html">Set Jam</a>
+      <a href="/setalarm.html">Set Alarm</a>
+      <a href="/setalarmhar.html">Alarm har</a>
+      <a class="active" href="/setwifi.html">Set Wifi</a>
+      <a href="/kontak.html">Kontak</a>
+    </div>
+
+	  <h1>SETTING WIFI</h1>
+    <h3>list wifi</h3>
+            <p>
+                <a href="/setscan.html"><button class="button">SCAN</button></a>
+            </p>
+    
+ 	</div>
+	<div>
+
+    <div class="batasform2">
+      <h3>Form Setting wifi</h3>
+        
+        <p>
+          <span class="sensor-labels">SSID:</span><br>
+          <span id="teks1">%TEKS1%</span> 
+        </p>
+
+        <p>
+          <span class="sensor-labels">PASS:</span><br>
+          <span id="teks2">%TEKS2%</span> 
+        </p>
+
+         <p>
+          <span class="sensor-labels">Email Notif:</span><br>
+          <span id="teks3">%TEKS3%</span> 
+        </p>
+
+        <!-- <p>
+          <span class="sensor-labels">kondisi alarm:</span><br>
+          <span id="alarm2">%ALARM2%</span> 
+        </p> -->
+
+
+        <form id="ngeluh" action="/get" >
+          <div id="formku3">
+            <div>
+              <p>Set lama booting: <span id="valuecerah">%CERAH%</span></p>              
+              <input name="kecerahan" type="range" min="0" max="100" value="" class="slider" id="kecerahan" event="on">
+            </div>
+            <br>
+            <div class="setitem">
+              <label for="teksinput">Masukkan ssid:</label> <br> <br>
+              <input id="teksinput" type="teks" name="teksinput" value="" maxlength="32">
+            </div>
+            <br>
+
+             <div class="setitem">
+              <label for="teksinput1">Masukkan password:</label> <br> <br>
+              <input id="teksinput1" type="teks" name="teksinput1" value="" maxlength="32">
+            </div>
+
+            <div class="setitem">
+              <label for="teksinput2">Masukkan Email notif:</label> <br> <br>
+              <input id="teksinput2" type="teks" name="teksinput2" value="" maxlength="32">
+            </div>
+            
+            <input class="sinkron" type="button" value="Kirim Data wifi!" onclick="kirimAhReal()">
+          </div>
+
+        </form> 
+      
+    </div>
+
+	 </div>
+</body>
+<script src="/script/script_setwifi.js"></script>
+</html>

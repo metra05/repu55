@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html>
+	
+<head>
+  <title>Jam Alarm</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" type="text/css" href="/css/style_scan.css">
+
+</head>
+
+<body>
+	
+	<div>
+    
+        <div class="topnav">
+            <a href="/index.html">Home</a>
+            <a href="/setjam.html">Set Jam</a>
+            <a href="/setalarm.html">Set Alarm</a>
+            <a href="/setalarmhar.html">Alarm har</a>
+            <a href="/setwifi.html">Set Wifi</a>
+            <a class="active" href="/scan.html">Scan Wifi</a>
+            <a href="/kontak.html">Kontak</a>
+        </div>
+
+            <h1>SCAN WIFI</h1>
+    
+ 	</div>
+
+    <div>
+
+        <div >
+            <!-- <h3>mulai scan wifi</h3>
+            <p>
+                <a href="/hasil"><button class="button">SCAN</button></a>
+            </p> -->
+            <h1>ESP8266 Access Point</h1>
+            <button class="button" onclick="scanWiFi()">Scan WiFi</button>
+            <ul id="wifiList"></ul>
+        </div>
+
+
+        <div id="hasil">
+
+        </div>
+
+	</div>
+
+</body>
+<script src="/script/script_scan.js"></script>
+</html>

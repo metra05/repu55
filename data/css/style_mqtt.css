@@ -1,0 +1,46 @@
+
+html {
+  font-family: Arial;
+  display: inline-block;
+  margin: 0px auto;
+  text-align: center;
+}
+
+
+h1 {
+  color: #0F3376;
+  padding: 2vh;
+}
+
+/* .prolog{
+  width: 350px;
+  display: inline-block;
+} */
+
+p {
+  font-size: 1rem;
+}
+
+
+body { 
+    font-family: Arial, sans-serif; 
+    max-width: 800px; 
+    margin: 0 auto; 
+    padding: 20px; 
+}
+
+#data-container { 
+    margin-top: 20px; 
+    padding: 15px; 
+    border: 1px solid #ddd; 
+    border-radius: 5px; 
+}
+
+.data-item { 
+    margin-bottom: 10px; 
+}
+
+.sensor-value { 
+    font-weight: bold; 
+    color: #2c3e50; 
+}

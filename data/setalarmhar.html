@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+
+<html>
+	
+<head>
+  <title>Jam Alarm</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" type="text/css" href="/css/style_setalarmhar.css">
+
+</head>
+
+<body>
+	
+	<div>
+    
+    <div class="topnav">
+      <a href="/index.html">Home</a>
+      <a href="/setjam.html">Set Jam</a>
+      <a href="/setalarm.html">Set Alarm</a>
+      <a class="active" href="/setalarmhar.html">Alarm har</a>
+      <a href="/setwifi.html">Set Wifi</a>
+      <a href="/kontak.html">Kontak</a>
+    </div>
+
+	  <h1>SETTING ALARM</h1>
+    
+ 	</div>
+	<div>
+
+    <div class="batasform2">
+      <h3>Form Setting Alarm</h3>
+        
+        <p>
+          <a href="/on"><button class="button">ON</button></a>
+          <a href="/off"><button class="button button2">OFF</button></a>
+        </p>
+        <p>ALARM: <strong id="state"> %STATE%</strong></p>
+        <p>
+          <span class="sensor-labels">Relay nyalah:</span>
+          <span id="alarmh">%ALARMH%</span> 
+        </p>
+        <p>
+          <span class="sensor-labels">Relay padam:</span>
+          <span id="alarmah">%ALARMAH%</span> 
+        </p>
+
+        <p>
+          <span class="sensor-labels">HARI ALARM AKTIF:</span><br>
+          <span id="alarm2">%ALARM2%</span> 
+        </p>
+
+        <form id="ngeluh2" action="/get" >
+          <div id="formku2">
+
+            <div class="setitem">
+              <span class="tengah">Relay on: </span>
+              <label class="switch">
+                <input type="checkbox" id="aktif1h" name="aktif1h" value="1">
+                <span class="slider round"></span>
+              </label>
+              <div class="petek2">
+                <label for="alarmjamh">Masukkan Jam Relay on:</label> 
+                <input type="number" id="alarmjamh" name="alarmjamh" min="0" max="23"> 
+                <label for="alarmmenith">Masukkan Menit Relay on:</label> 
+                <input type="number" id="alarmmenith" name="alarmmenith" min="0" max="59"> 
+                <label for="alarmdetik">Lama Relay on (detik):</label> 
+                <input type="number" id="alarmdetikh" name="alarmdetikh" min="5" max="250"> 
+              </div>
+            </div>
+              <label class="emboh">Pilih Hari:</label> <br>
+              <div id="pilihhar1">
+                <input type="checkbox"id="Minggu" class="Minggu" name="Minggu" value="1" onclick="kirimAH()">
+                <label for="Minggu">Minggu</label>
+                <input type="checkbox" id="Senin" class="Senin" name="Senin" value="1" onclick="kirimAH()">
+                <label for="Senin">Senin</label>
+                <input type="checkbox" id="Selasa" class="Selasa" name="Selasa" value="1" onclick="kirimAH()">
+                <label for="Selasa">Selasa</label>
+                <input type="checkbox" id="Rabu" class="Rabu" name="Rabu" value="1" onclick="kirimAH()">
+                <label for="Rabu">Rabu</label>
+                <input type="checkbox" id="Kamis" class="Kamis" name="Kamis" value="1" onclick="kirimAH()">
+                <label for="Kamis">Kamis</label>
+                <input type="checkbox" id="Jumat" class="Jumat" name="Jumat" value="1" onclick="kirimAH()">
+                <label for="Jumat">Jumat</label>
+                <input type="checkbox" id="Sabtu" class="Sabtu" name="Sabtu" value="1" onclick="kirimAH()">
+                <label for="Sabtu">Sabtu</label>
+              </div>
+              <input id="sembunyih" type="number" name="integerharh" value="">
+
+            <div class="setitem">
+              <span class="tengah">Relay off: </span>
+              <label class="switch">
+                <input type="checkbox" id="aktif2h" name="aktif2h">
+                <span class="slider round"></span>
+              </label>
+              <div class="petek2">
+                <label for="alarmjam1h">Masukkan Jam Relay off:</label>  
+                <input type="number" id="alarmjam1h" name="alarmjam1h" min="0" max="23"> 
+                <label for="alarmmenit1h">Masukkan Menit Relay off:</label> 
+                <input type="number" id="alarmmenit1h" name="alarmmenit1h" min="0" max="59"> 
+                <label for="alarmdetik1h">Lama Relay on (detik):</label> 
+                <input type="number" id="alarmdetik1h" name="alarmdetik1h" min="5" max="250"> 
+              </div>
+            </div>
+              <label class="emboh">Pilih Hari:</label> <br>
+              <div id="pilihhar2">
+                <input type="checkbox" id="Minggu1" class="Minggu" name="Minggu" value="1" onclick="kirimAH()">
+                <label for="Minggu1">Minggu</label>
+                <input type="checkbox" id="Senin1" class="Senin" name="Senin" value="1" onclick="kirimAH()">
+                <label for="Senin1">Senin</label>
+                <input type="checkbox" id="Selasa1" class="Selasa" name="Selasa" value="1" onclick="kirimAH()">
+                <label for="Selasa1">Selasa</label>
+                <input type="checkbox" id="Rabu1" class="Rabu" name="Rabu" value="1" onclick="kirimAH()">
+                <label for="Rabu1">Rabu</label>
+                <input type="checkbox" id="Kamis1" class="Kamis" name="Kamis" value="1" onclick="kirimAH()">
+                <label for="Kamis1">Kamis</label>
+                <input type="checkbox" id="Jumat1" class="Jumat" name="Jumat" value="1" onclick="kirimAH()">
+                <label for="Jumat1">Jumat</label>
+                <input type="checkbox" id="Sabtu1" class="Sabtu" name="Sabtu" value="1" onclick="kirimAH()">
+                <label for="Sabtu1">Sabtu</label>
+              </div>
+              <input id="sembunyi1h" type="number" name="integerhar1h" value="">
+                  
+    
+            <!-- <input type="submit" value="Kirim!" > -->
+          </div>
+        
+      </form> 
+      <input class="sinkron" type="button" value="Kirim Alarm harian!" onclick="kirimAhReal()">
+
+    </div>
+
+	 </div>
+</body>
+<script src="/script/script_setalarmhar.js"></script>
+</html>
