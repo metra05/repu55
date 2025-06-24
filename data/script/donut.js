@@ -109,7 +109,7 @@ var DonutChart = function(){
             }
         }
         //console.log(sensorDomainArray[1]*180);
-        console.log(det3);
+        //console.log(det3);
 
         l.selectAll("line")
             .data(det3)

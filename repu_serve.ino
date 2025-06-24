@@ -159,6 +159,20 @@ String alarmah(){
    return String(buffer);
 }
 
+String viewl(){
+   if(SPIFFS.exists(logFileName)){
+      File logFile = SPIFFS.open(logFileName, "r");
+      String logContent;
+      while(logFile.available()){
+          logContent += logFile.readStringUntil('\n')+"<br>";        //susah menyiasati ini
+      }
+     logFile.close();
+   
+   return String (logContent);
+   }
+   return ("data tidak ditemukan");
+}
+
 ///////////////////////////////////
 
 // Replaces placeholder with LED state value
@@ -222,6 +236,9 @@ String processor(const String& var) {
   }
   else if (var == "ALARMAH") {
     return alarmah();               //ini menampilkan jam:menit alarm harian2  
+  }
+  else if (var == "VIEWL") {
+    return viewl();               //ini menampilkan jam:menit alarm harian2  
   }
   return "ada yang error";
 }

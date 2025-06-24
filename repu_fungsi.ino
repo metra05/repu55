@@ -209,6 +209,98 @@ void clearEEPROM() {
 }
 
 
+//===============================ini log=======================
+/*
+void logData(float data) {
+  File logFile = SPIFFS.open(logFileName, "a");
+  if (!logFile) {
+    Serial.println("Gagal membuka file log");
+    return;
+  }
+  
+  // Format: Waktu,Data
+  logFile.print(getjam());
+  logFile.print(", ");
+  logFile.println(data);
+  logFile.close();
+  
+  Serial.print("Data tersimpan: ");
+  Serial.print(millis());
+  Serial.print(", ");
+  Serial.println(data);
+  
+  delay(100); // Memberi waktu untuk proses async //ini kok ngaruh ya?
+}
+*/
+
+//====================================ini yang baru merotasi file log berdasar size==============
+// ini menggunakan pembatasan pada ukuran file data log
+void logDataWithRotation( float data, float datah ) {//unsigned long timestamp, float data, float datah ) {
+  // Periksa ukuran file log
+  File logFile = SPIFFS.open(logFileName, "r+");
+  
+  if (!logFile) {
+    Serial.println("Gagal membuka file log");
+    return;
+  }
+
+  size_t currentSize = logFile.size();
+  
+  // Jika ukuran file mendekati maksimum, lakukan rotasi
+  if (currentSize >= maxLogSize) {
+    logFile.close();
+    rotateLogFile();
+    logFile = SPIFFS.open(logFileName, "a"); // Buka kembali dalam mode append
+  } else {
+    logFile.close();
+    logFile = SPIFFS.open(logFileName, "a");
+  }
+
+  // Tulis data baru
+  if (logFile) {
+    logFile.print(getjam());   //timestamp);
+    logFile.print(",   ");
+    logFile.print(data);
+    logFile.print(",   ");
+    logFile.print(datah);
+    logFile.println("  -");
+    logFile.close();
+    
+    Serial.print("Data tercatat: ");
+    Serial.print(getjam()); //timestamp);
+    Serial.print(", ");
+    Serial.print(data);
+    Serial.print(", ");
+    Serial.println(datah);
+  }
+  //delay(100);
+}
+
+//  Fungsi Rotasi File Log =============================
+
+void rotateLogFile() {
+  Serial.println("Melakukan rotasi file log...");
+  
+  // Hapus file log lama jika ada
+  if (SPIFFS.exists("/data_log_old.txt")) {
+    SPIFFS.remove("/data_log_old.txt");
+  }
+
+  // Rename file log saat ini menjadi backup
+  if (SPIFFS.exists(logFileName)) {
+    SPIFFS.rename(logFileName, "/data_log_old.txt");
+  }
+
+  // Buat file log baru
+  File newLogFile = SPIFFS.open(logFileName, "w");
+  if (newLogFile) {
+    newLogFile.println("Waktu,  Data suhu,  Data humidity -"); // Header
+    newLogFile.close();
+    Serial.println("File log baru dibuat");
+  }
+}
+
+
 
 
 //////////////////////////////////////////////////////////////////////////////////////////

@@ -1,17 +1,13 @@
-/***
-   Rui Santos
-   Complete project details at https://RandomNerdTutorials.com
-***/
-/* Add a black background color to the top navigation */
 
 .topnav {
   background-color: #0411ce;
   overflow: hidden;
+  
 }
 
 /* Style the links inside the navigation bar */
 .topnav a {
-  /* float: left; */
+  /* float: center;   yang ini membuat ada di tepi kiri */
   display: inline-block;
   color: #f2f2f2;
   text-align: center;
@@ -50,6 +46,13 @@
 }
 
 /*==========================*/
+#data-containerlog { 
+    margin-top: 20px; 
+    padding: 15px; 
+    border: 1px solid #ddd; 
+    border-radius: 5px; 
+}
+/*===============================*/
 
 html {
   font-family: Arial;
