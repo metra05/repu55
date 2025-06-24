@@ -116,6 +116,13 @@ void webserve(){
     //request->send(SPIFFS, "/setscan.html", String(), false, processor);
     request->send(200, "teks/json", tes.c_str());
   });
+
+
+   //route untuk manmpilkan nilai data log ======================================
+  server.on("/viewl", HTTP_GET, [](AsyncWebServerRequest * request) {
+    request->send_P(200, "text/plain", viewl().c_str());
+  });
+
   
 
   //route untuk manangani data form inputan dikirim
@@ -421,5 +428,109 @@ void webserve(){
      }
     
   });
+
+
+  //=============================ini untuk log data=========================================
+  // Route untuk root / web page
+  server.on("/log", HTTP_GET, [](AsyncWebServerRequest *request){
+//    String html = "<html><head><title>ESP8266 Data Logger</title></head><body>";
+//    html += "<h1>ESP8266 Data Logger</h1>";
+//    html += "<p><a href='/viewlog'>View Log File</a></p>";
+//    html += "<p><a href='/download'>Download Log File</a></p>";
+//    html += "<p><a href='/clearlog' onclick='return confirm(\"Are you sure?\")'>Clear Log File</a></p>";
+//    html += "</body></html>";
+//    request->send(200, "text/html", html);
+    request->send(SPIFFS, "/log.html", String(), false);    //, processor);
+  });
+
+
+  // Route untuk melihat log file
+  server.on("/viewlog", HTTP_GET, [](AsyncWebServerRequest *request){
+    if(SPIFFS.exists(logFileName)){
+//      File logFile = SPIFFS.open(logFileName, "r");
+//      String logContent;
+//      while(logFile.available()){
+//        logContent += logFile.readStringUntil('\n') + "<br>";
+//      }
+//      logFile.close();
+//      
+//      String html = "<html><head><title>View Log</title></head><body>";
+//      html += "<h1>Log File Content</h1>";
+//      html += "<pre>" + logContent + "</pre>";
+//      html += "<p><a href='/log'>Back to Home</a></p>";
+//      html += "</body></html>";
+      
+      //request->send(200, "text/html", html);
+      request->send(SPIFFS, "/viewlog.html", String(), false, processor);
+    } else {
+      request->send(404, "text/plain", "Log file not found");
+    }
+  });
+
+  // Route untuk download log file
+  server.on("/download", HTTP_GET, [](AsyncWebServerRequest *request){
+    if(SPIFFS.exists(logFileName)){
+      request->send(SPIFFS, logFileName, "text/plain", true);
+    } else {
+      request->send(404, "text/plain", "Log file not found");
+    }
+  });
+
+
+    // Route untuk download log file
+  server.on("/downloadlama", HTTP_GET, [](AsyncWebServerRequest *request){
+    if(SPIFFS.exists(logFileNamelama)){
+      request->send(SPIFFS, logFileNamelama, "text/plain", true);
+    } else {
+      request->send(404, "text/plain", "Log file not found");
+    }
+  });
+
+
+  // Route untuk clear log file
+  server.on("/clearlog", HTTP_GET, [](AsyncWebServerRequest *request){
+    File logFile = SPIFFS.open(logFileName, "w");
+    if (!logFile) {
+      request->send(500, "text/plain", "Failed to clear log file");
+    } else {
+      logFile.println("Waktu,  Data suhu,  Data humidity -"); // Header
+      logFile.close();
+      request->send(200, "text/plain", "Log file cleared successfully");
+    }
+  });
+
+
+  // Route untuk mendapatkan data log dalam format JSON
+  server.on("/api/logs", HTTP_GET, [](AsyncWebServerRequest *request){
+    if(SPIFFS.exists(logFileName)){
+      File logFile = SPIFFS.open(logFileName, "r");
+      
+      // Lewati header
+      logFile.readStringUntil('\n');
+      
+      DynamicJsonDocument doc(4096);
+      JsonArray logs = doc.to<JsonArray>();
+      
+      while(logFile.available()){
+        String line = logFile.readStringUntil('\n');
+        int commaIndex = line.indexOf(',');
+        if(commaIndex > 0){
+          JsonObject logEntry = logs.createNestedObject();
+          logEntry["timestamp"] = line.substring(0, commaIndex);
+          logEntry["value"] = line.substring(commaIndex+1);
+        }
+      }
+      logFile.close();
+      
+      String response;
+      serializeJson(doc, response);
+      request->send(200, "application/json", response);
+    } else {
+      request->send(404, "application/json", "{\"error\":\"Log file not found\"}");
+    }
+  });
+
+  
+  
 
 }

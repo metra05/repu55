@@ -1,14 +1,14 @@
 
 	//mencoba mengganti set interval dengan event tombol kirim diclik
   //setInterval(function ( ) { //====== blok ini tidak perlu dipanggil secara interval cukup sekali pas loading
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("state").innerHTML = this.responseText;
-    }
-  };
-  xhttp.open("GET", "/state", true);
-  xhttp.send();
+  // var xhttp = new XMLHttpRequest();
+  // xhttp.onreadystatechange = function() {
+  //   if (this.readyState == 4 && this.status == 200) {
+  //     document.getElementById("state").innerHTML = this.responseText;
+  //   }
+  // };
+  // xhttp.open("GET", "/state", true);
+  // xhttp.send();
 //}, 1000 ) ; //ini tes...........................................
 
 //menampilkan jam alarm

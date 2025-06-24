@@ -96,6 +96,7 @@ bool shouldRelayBeOn() {// yang harusnya masuk sini parameter: aPilHarh[], aPilH
   int offday_sebe=0;
   int offday_sesu=0;
   
+
   DateTime now = rtc.now();
   int currentDay = now.dayOfWeek();
   // Konversi waktu saat ini, waktu nyala, dan waktu mati ke menit
@@ -106,6 +107,7 @@ bool shouldRelayBeOn() {// yang harusnya masuk sini parameter: aPilHarh[], aPilH
   boolean posisioff=false;
 //  boolean posisioff_sebe, posisioff_sesu;
 
+  
   //mulai sini dicari ketemu hari onDay dan onOff yang terdekat yang aktif sesuai isi apilhar[] curenntday menentukan posisi pengechekkan hari yang kosong
   //EEPROM.read(370);
    if (aPilHarh==0){     //onHari==0){  //ohHari tidak dipakai    //manual mati alarm tidak aktif
@@ -148,8 +150,19 @@ bool shouldRelayBeOn() {// yang harusnya masuk sini parameter: aPilHarh[], aPilH
            posision=false;
            break; 
         }
+      }
+      if (posision==false && onDay>currentDay && currentDay<6){ //berarti ditemukan setelah curent day maka perlu dichek apakah ada onday yang posisinya berada di setelah onday ditemukan
+        for(int i=0; i<=(6-currentDay); i++){
+          if(pilharh[6-i]==1){
+           onDay=6-i;
+           Serial.print("ditemukan nilai onDay sebelum currentday melewati weekend: ");
+           Serial.println(onDay);
+           posision=true;
+           break;
+          }
+        }
+      }
      }
-    }
    }// sampai sini seharusnya sudah ditemukan posisi onDay
 //========================================================================
 
@@ -244,7 +257,7 @@ bool shouldRelayBeOn() {// yang harusnya masuk sini parameter: aPilHarh[], aPilH
  //  Serial.println(offDay);// sampai sini seharusnya sudah ditemukan posisi offDay
 
    if (onDay > 7){
-    Serial.println("error pada nilai onDay periksa koneksi ds3231");
+    Serial.println("error pada nilaio onDay periksa koneksi ds3231");
     return false;
    }
    

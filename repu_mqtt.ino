@@ -1,4 +1,4 @@
-
+/*
 
 void connectToWifi(){
 //  WiFi.mode(WIFI_STA); 
@@ -65,3 +65,5 @@ void jalankanMqtt(){
   
   
 }
+
+*/
